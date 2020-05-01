@@ -1,0 +1,12 @@
+[package]
+name = "eurorack-oxide-utils"
+version = "0.1.1"
+authors = ["Olexander Yermakov <olexander.yermakov@gmail.com>"]
+edition = "2018"
+description = "Utility library with useful Eurorack related stuff."
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+keywords = ["audio", "eurorack", "embedded"]
+repository = "https://github.com/alexyer/eurorack-oxide-utils"
+
+[dependencies]
