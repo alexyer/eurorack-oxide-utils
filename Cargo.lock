@@ -3,3 +3,12 @@
 [[package]]
 name = "eurorack-oxide-utils"
 version = "0.1.1"
+dependencies = [
+ "micromath",
+]
+
+[[package]]
+name = "micromath"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c61d2b2dd22f6e15164f8ae1b6cec2028662c57e210c5809328bd065f92eba13"

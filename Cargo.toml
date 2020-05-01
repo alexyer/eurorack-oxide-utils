@@ -10,3 +10,4 @@ keywords = ["audio", "eurorack", "embedded"]
 repository = "https://github.com/alexyer/eurorack-oxide-utils"
 
 [dependencies]
+micromath = "*"
