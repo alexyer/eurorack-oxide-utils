@@ -1,6 +1,6 @@
 [package]
 name = "eurorack-oxide-utils"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Olexander Yermakov <olexander.yermakov@gmail.com>"]
 edition = "2018"
 description = "Utility library with useful Eurorack related stuff."
@@ -10,4 +10,8 @@ keywords = ["audio", "eurorack", "embedded"]
 repository = "https://github.com/alexyer/eurorack-oxide-utils"
 
 [dependencies]
-micromath = "*"
+micromath = "1.0.0"
+
+[profile.release]
+opt-level = 's'
+lto = true
