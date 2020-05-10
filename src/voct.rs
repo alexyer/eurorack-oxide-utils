@@ -4,6 +4,18 @@ use core::ops;
 #[allow(unused_imports)]
 use micromath::F32Ext;
 
+/// Trait to handle voltage per octave conversions.
+pub trait Voltage {
+    /// Voltage to Hertz.
+    fn hz(&self) -> f32;
+
+    /// Voltage to millisecond.
+    fn ms(&self) -> u32;
+
+    /// Voltage to microseconds.
+    fn us(&self) -> u32;
+}
+
 /// V/Oct type.
 #[derive(Debug)]
 pub struct VOct(pub f32);
@@ -14,37 +26,34 @@ pub struct MvOct(pub f32);
 
 const C1_FREQ: f32 = 32.703;
 
-impl VOct {
+impl Voltage for VOct {
     /// Convert to Hz.
-    pub fn hz(&self) -> f32 {
+    fn hz(&self) -> f32 {
         C1_FREQ * 2_f32.powf(self.0 - 1.0)
     }
 
     /// Convert to ms.
-    pub fn ms(&self) -> u32 {
+    fn ms(&self) -> u32 {
         (1000.0 / self.hz()) as u32
     }
 
     /// Convert to ms.
-    pub fn us(&self) -> u32 {
+    fn us(&self) -> u32 {
         (1000000.0 / self.hz()) as u32
     }
 }
 
-impl MvOct {
-    /// Convert to Hz.
-    pub fn hz(self) -> f32 {
-        VOct::from(self).hz()
+impl Voltage for MvOct {
+    fn hz(&self) -> f32{
+        C1_FREQ * 2_f32.powf(self.0 / 1000.0 - 1.0)
     }
 
-    /// Convert to ms.
-    pub fn ms(self) -> u32 {
-        VOct::from(self).ms()
+    fn ms(&self) -> u32{
+        (1000.0 / self.hz()) as u32
     }
 
-    /// Convert to us.
-    pub fn us(self) -> u32 {
-        VOct::from(self).us()
+    fn us(&self) -> u32{
+        (1000000.0 / self.hz()) as u32
     }
 }
 
