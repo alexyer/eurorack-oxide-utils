@@ -96,6 +96,32 @@ macro_rules! impl_arithmetic {
                 self.0 /= rhs;
             }
         }
+
+        impl ops::Add<$wrapped> for $wrapper {
+            type Output = Self;
+            fn add(self, rhs: $wrapped) -> Self {
+                Self(self.0 + rhs)
+            }
+        }
+
+        impl ops::Sub<$wrapped> for $wrapper {
+            type Output = Self;
+            fn sub(self, rhs: $wrapped) -> Self {
+                Self(self.0 - rhs)
+            }
+        }
+
+        impl ops::AddAssign<$wrapped> for $wrapper {
+            fn add_assign(&mut self, rhs: $wrapped) {
+                self.0 += rhs;
+            }
+        }
+
+        impl ops::SubAssign<$wrapped> for $wrapper {
+            fn sub_assign(&mut self, rhs: $wrapped) {
+                self.0 -= rhs;
+            }
+        }
     };
 }
 
